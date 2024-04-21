@@ -1,20 +1,10 @@
-using System.ComponentModel.DataAnnotations;
+namespace PlatformService.Dtos;
 
-namespace PlatformService.Models;
-
-public class Platform
+public class PlatformReadDto
 {
-    [Key]
-    [Required]
     public int Id { get; set; }
-
-    [Required]
     public required string Name { get; set; }
-
-    [Required]
     public required string Publisher { get; set; }
-
-    [Required]
     public required string Cost { get; set; }
 
 }
