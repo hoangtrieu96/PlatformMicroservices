@@ -1,0 +1,11 @@
+@CommandsService_HostAddress = http://localhost:5069
+
+GET {{CommandsService_HostAddress}}/
+Accept: application/json
+
+###
+
+POST {{CommandsService_HostAddress}}/api/c/platforms/
+Content-Type: application/json
+
+{}
