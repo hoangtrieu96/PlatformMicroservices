@@ -1,0 +1,43 @@
+### Make sure to update the node port accordingly
+@PlatformService_HostAddress = http://localhost:31297
+
+
+### Get all platforms
+GET {{PlatformService_HostAddress}}/api/platforms
+Accept: application/json
+
+### Get a single platform by id
+GET {{PlatformService_HostAddress}}/api/platforms/1
+Accept: application/json
+
+### Create a platform
+POST {{PlatformService_HostAddress}}/api/platforms
+Content-Type: application/json
+
+{
+    "name": "Docker",
+    "publisher": "Docker",
+    "cost": "Free"
+}
+
+### Using API Gatewat Ingress Nginx
+@ingress_address = http://acme.com
+
+
+### Get all platforms
+GET {{PlatformService_HostAddress}}/api/platforms
+Accept: application/json
+
+### Get a single platform by id
+GET {{PlatformService_HostAddress}}/api/platforms/1
+Accept: application/json
+
+### Create a platform
+POST {{PlatformService_HostAddress}}/api/platforms
+Content-Type: application/json
+
+{
+    "name": "Docker",
+    "publisher": "Docker",
+    "cost": "Free"
+}
