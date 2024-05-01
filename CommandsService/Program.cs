@@ -1,7 +1,7 @@
 using CommandsService.AsyncDataServices;
 using CommandsService.Data;
 using CommandsService.EventProcessing;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using CommandsService.SyncDataServices.Grpc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
     builder.Services.AddScoped<ICommandRepo, CommandRepo>();
     builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
+    builder.Services.AddScoped<IPlatformDataClient, PlatformDataClient>();
     builder.Services.AddControllers();
     builder.Services.AddHostedService<MessageBusSubscriber>();
     builder.Services.AddAutoMapper(typeof(Program));
@@ -18,9 +19,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 {
-    app.UseHttpsRedirection();
     app.MapControllers();
     app.UseSwagger();
     app.UseSwaggerUI();
+    PrepDb.PrepPopulation(app);
     app.Run();
 }

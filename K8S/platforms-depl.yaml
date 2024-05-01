@@ -29,3 +29,6 @@ spec:
     protocol: TCP
     port: 80 # service exposed port
     targetPort: 8080 # container port
+  - name: platformgrpc
+    port: 666
+    targetPort: 666
